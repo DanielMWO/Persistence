@@ -38,7 +38,8 @@ public class SchoolClass implements java.io.Serializable {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
-
+	
+	
 	public String toString() {
 		return "Class: " + profile + " (Started: " + getStartYear() + ", Current year: " + getCurrentYear() + ")";
 	}

@@ -13,5 +13,6 @@
 		<property name="connection.password"></property>
 	
 		<mapping resource="School.hbm.xml"/>
+		<mapping resource="SchoolClass.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

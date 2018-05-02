@@ -40,7 +40,7 @@ public class Main {
 		}
 	}
 
-	private void jdbcTest() {
+/*	private void jdbcTest() {
 		Connection conn = null;
 		Statement stmt = null;
 		try {
@@ -93,6 +93,8 @@ public class Main {
 			} // end finally try
 		} // end try
 		System.out.println("Goodbye!");
-	}// end jdbcTest
+	}*/
+	
+	// end jdbcTest
 
 }

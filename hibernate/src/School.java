@@ -1,11 +1,29 @@
+import java.util.HashSet;
+import java.util.Set;
+
 @SuppressWarnings("serial")
+
 public class School implements java.io.Serializable {
 
 	private long id;
 	private String name;
 	private String address;
+	private Set<SchoolClass> classes;
 
 	public School() {
+		classes = new HashSet<SchoolClass>();
+	}
+	
+	public void addClass(SchoolClass newClass) {
+		classes.add(newClass);
+	}
+
+	public Set<SchoolClass> getClasses() {
+		return classes;
+	}
+
+	public void setClasses(Set<SchoolClass> classes) {
+		this.classes = classes;
 	}
 
 	public long getId() {
@@ -32,8 +50,12 @@ public class School implements java.io.Serializable {
 		this.address = address;
 	}
 	
+	public void getClassProfile() {
+						
+	}
+	
 	public String toString() {
-		return "School: " + getName() + " (" + getAddress() + ")";
+		return "School: " + getName() + " (" + getAddress() + getClasses().size() + " classes)";
 }
 
 }
