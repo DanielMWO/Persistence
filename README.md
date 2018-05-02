@@ -1,0 +1,2 @@
+# Persistence
+Projekt z persystemcji
