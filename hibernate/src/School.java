@@ -50,8 +50,10 @@ public class School implements java.io.Serializable {
 		this.address = address;
 	}
 	
-	public void getClassProfile() {
-						
+	public void listClasses() {
+		for (SchoolClass c : classes) {
+			System.out.println(c.toString());
+		}
 	}
 	
 	public String toString() {

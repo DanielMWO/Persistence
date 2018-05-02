@@ -29,14 +29,18 @@ public class Main {
 		session.close();
 		HibernateUtil.shutdown();
 	}
-
+	
+	
+	
 	private void printSchools() {
 		Criteria crit = session.createCriteria(School.class);
 		List<School> schools = crit.list();
 
+		
 		System.out.println("### Schools and classes");
 		for (School s : schools) {
 			System.out.println(s);
+			s.listClasses();
 		}
 	}
 
