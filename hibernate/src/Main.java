@@ -4,12 +4,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.objectweb.asm.ClassAdapter;
 
 public class Main {
 
@@ -17,6 +20,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Main main = new Main();
+		main.addNewData();
 		main.printSchools();
 		main.close();
 	}
@@ -31,6 +35,64 @@ public class Main {
 	}
 	
 	
+	private void addNewData() {
+		
+		//Preaparing The DATA
+		Set<Student> tempStudentSet1 = new HashSet<Student>();
+		Set<Student> tempStudentSet2 = new HashSet<Student>();
+		Set<SchoolClass> tempClasses = new HashSet<SchoolClass>();
+		
+		Student studnent1 = new Student("Dave", "Jones", "87032298322");
+		Student studnent2 = new Student("Freddy", "Kryger", "87032298322");
+		Student studnent3 = new Student("Marlin", "Manson", "87032298322");
+		Student studnent4 = new Student("Bat", "Man", "87032298322");
+		Student studnent5 = new Student("Rock", "Man", "87032298322");
+		Student studnent6 = new Student("Criss", "Rock", "87032298322");
+		Student studnent7 = new Student("David", "Bones", "87032298322");
+		
+		tempStudentSet1.add(studnent1); 		
+		tempStudentSet1.add(studnent2); 		
+		tempStudentSet1.add(studnent3); 		
+		tempStudentSet1.add(studnent4); 		
+		tempStudentSet2.add(studnent5); 		
+		tempStudentSet2.add(studnent6); 		
+		tempStudentSet2.add(studnent7); 		
+		
+		SchoolClass classA = new SchoolClass();
+		SchoolClass classB = new SchoolClass();
+		
+		classA.setStudents(tempStudentSet1);
+		classA.setCurrentYear(1);
+		classA.setStartYear(2018);
+		classA.setProfile("SpecialTreatment");
+		
+		classB.setStudents(tempStudentSet2);
+		classB.setCurrentYear(2);
+		classB.setStartYear(2017);
+		classB.setProfile("RockAndRoll");
+		
+		
+		tempClasses.add(classB);
+		tempClasses.add(classA);
+		
+		School newSchool = new School();
+		
+		newSchool.setClasses(tempClasses);
+		newSchool.setAddress("Not to be disclosed");
+		newSchool.setName("Xaviers");
+		
+				
+		//Addidng DATA
+		
+		Transaction transaction = session.beginTransaction();
+		session.save(newSchool);
+		transaction.commit();
+		
+	}	
+	
+	
+	
+	
 	
 	private void printSchools() {
 		Criteria crit = session.createCriteria(School.class);
@@ -41,6 +103,7 @@ public class Main {
 		for (School s : schools) {
 			System.out.println(s);
 			s.listClasses();
+			
 		}
 	}
 

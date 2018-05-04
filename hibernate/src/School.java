@@ -53,7 +53,8 @@ public class School implements java.io.Serializable {
 	public void listClasses() {
 		for (SchoolClass c : classes) {
 			System.out.println(c.toString());
-		}
+			c.listStudents();
+		}	
 	}
 	
 	public String toString() {

@@ -1,3 +1,4 @@
+import java.util.HashSet;
 import java.util.Set;
 
 public class SchoolClass implements java.io.Serializable {
@@ -6,7 +7,21 @@ public class SchoolClass implements java.io.Serializable {
 	private int startYear;
 	private int currentYear;
 	private String profile;
+	private Set<Student> students;
 	
+	
+	public SchoolClass() {
+		students = new HashSet<Student>();
+	}
+	
+	public Set<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(Set<Student> students) {
+		this.students = students;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -39,6 +54,11 @@ public class SchoolClass implements java.io.Serializable {
 		this.profile = profile;
 	}
 	
+	public void listStudents() {
+		for (Student s : students) {
+			System.out.println(s.toString());
+		}
+	}
 	
 	
 	public String toString() {
