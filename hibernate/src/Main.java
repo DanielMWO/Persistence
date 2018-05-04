@@ -22,7 +22,8 @@ public class Main {
 		Main main = new Main();
 		//main.executeQueries();
 		main.countElements();
-		main.updateSchool();
+		//main.updateSchool();
+		main.addNewTeacherData();
 		//main.addNewData();
 		//main.printSchools();
 		main.close();
@@ -84,9 +85,51 @@ public class Main {
 		School school2 = (School) query.uniqueResult();
 		System.out.println("\n---------\n Nowy Adress" + school2);
 		
-		
-		
 	}
+	
+	//Zadanie 5 
+	
+	private void addNewTeacherData() {
+		//preparing Teachers
+		
+		Teacher teacher1 = new Teacher("Profesor", "Xavier","Pscyhic reading");
+		Teacher teacher2 = new Teacher("Logan", "WeponX","Regeneration");
+		Teacher teacher3 = new Teacher("Bruce", "Banner","Meditatiom");
+		Teacher teacher4 = new Teacher("Bucky", "Barnes","One-arm combat");
+		
+		//fetching classes
+	
+		Query query = session.createQuery("FROM SchoolClass WHERE id=1");
+		SchoolClass sClass1 = (SchoolClass) query.uniqueResult();
+		query = session.createQuery("FROM SchoolClass WHERE id=2");
+		SchoolClass sClass2 = (SchoolClass) query.uniqueResult();
+		System.out.println(sClass1);
+		System.out.println(sClass2);
+		
+		Transaction transaction = session.beginTransaction();
+		
+		teacher1.addClasses(sClass1);
+		teacher1.addClasses(sClass2);
+		teacher2.addClasses(sClass1);
+		teacher3.addClasses(sClass2);
+		teacher4.addClasses(sClass2);
+		
+		session.save(teacher1);
+		session.save(teacher2);
+		session.save(teacher3);
+		session.save(teacher4);
+		
+		sClass1.addTeachers(teacher1);
+		sClass1.addTeachers(teacher2);
+		
+		sClass2.addTeachers(teacher1);
+		sClass2.addTeachers(teacher3);
+		sClass2.addTeachers(teacher4);
+				
+		
+		transaction.commit();
+	}
+		
 	
 	
 	

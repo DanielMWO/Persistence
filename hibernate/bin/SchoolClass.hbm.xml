@@ -16,9 +16,10 @@
 		<one-to-many class="Student" />	
 		</set>
 		
-		<set name="teachers">
+		<set name="teachers" table="teacherClasses" cascade="save-update">
+		
 		<key column="class_id" />
-		<many-to-many class="Teacher" />	
+		<many-to-many column="teacher_id" class="Teacher" />	
 		</set>
 		
 	</class>
