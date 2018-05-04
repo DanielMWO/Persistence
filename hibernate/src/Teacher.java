@@ -13,6 +13,14 @@ public class Teacher {
 		this.classes = new HashSet<SchoolClass>();
 	}
 	
+	
+	public Teacher(String name, String surname, String subject) {
+		this.name = name;
+		this.surname = surname;
+		this.subject = subject;
+	
+	}
+
 	public Teacher(String name, String surname, String subject, Set<SchoolClass> classes) {
 		this.name = name;
 		this.surname = surname;
@@ -26,6 +34,10 @@ public class Teacher {
 
 	public void setClasses(Set<SchoolClass> classes) {
 		this.classes = classes;
+	}
+	
+	public void addClasses(SchoolClass schoolClass) {
+		this.classes.add(schoolClass);
 	}
 
 	public long getId() {

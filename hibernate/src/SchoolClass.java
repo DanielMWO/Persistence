@@ -23,6 +23,11 @@ public class SchoolClass implements java.io.Serializable {
 		this.students = students;
 	}
 
+	
+	public void addStudents(Student student) {
+		this.students.add(student);
+	}
+	
 	public Set<Teacher> getTeachers() {
 		return teachers;
 	}
@@ -30,6 +35,11 @@ public class SchoolClass implements java.io.Serializable {
 	public void setTeachers(Set<Teacher> teachers) {
 		this.teachers = teachers;
 	}
+	
+	public void addTeachers (Teacher teacher) {
+		this.teachers.add(teacher);
+	}
+	
 
 	public long getId() {
 		return id;
