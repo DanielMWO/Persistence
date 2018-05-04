@@ -9,9 +9,10 @@ public class School implements java.io.Serializable {
 	private String name;
 	private String address;
 	private Set<SchoolClass> classes;
-
+	
 	public School() {
 		classes = new HashSet<SchoolClass>();
+		
 	}
 	
 	public void addClass(SchoolClass newClass) {
