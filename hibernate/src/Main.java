@@ -58,6 +58,7 @@ public class Main {
 		tempStudentSet2.add(studnent6); 		
 		tempStudentSet2.add(studnent7); 		
 		
+		
 		SchoolClass classA = new SchoolClass();
 		SchoolClass classB = new SchoolClass();
 		
