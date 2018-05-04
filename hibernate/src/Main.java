@@ -20,8 +20,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		Main main = new Main();
-		main.addNewData();
-		main.printSchools();
+		//main.executeQueries();
+		main.countElements();
+		main.updateSchool();
+		//main.addNewData();
+		//main.printSchools();
 		main.close();
 	}
 
@@ -35,6 +38,50 @@ public class Main {
 	}
 	
 	
+	//Zadanie4 (1-2)
+	private void executeQueries() {
+        String hql = "FROM School s WHERE s.name = 'UE'";
+        Query query = session.createQuery(hql);
+        List results = query.list();
+        System.out.println(results);
+        
+        
+        Transaction transaction = session.beginTransaction();
+        for (Object s:results) {
+        	session.delete(s);
+        	}
+        transaction.commit();
+        System.out.println("Deleted");
+	}
+	//Zadaie4 (3-5)
+	private void countElements() {
+		String countSchools =  "SELECT COUNT(s) FROM School s";
+		String countStudnets =  "SELECT COUNT(s) FROM Student s";
+		String countSchools2 =  "SELECT s.name FROM School s WHERE s.classes.size >= 2";
+		String findSchools =  "SELECT s FROM School s INNER JOIN s.classes classes WHERE classes.profile = 'mat-fiz' AND classes.currentYear >= 2";
+		
+		Query query = session.createQuery(countSchools);
+		System.out.println("Liczba Szkó³: " +query.list().toString());
+		query = session.createQuery(countStudnets);
+		System.out.println("Liczba studentów: " +query.list().toString());
+		query = session.createQuery(countSchools2);
+		System.out.println("Szko³y o co najmniej dwóch klasach : " +query.list().toString());
+		query = session.createQuery(findSchools);
+		System.out.println("Szko³a z mat-fiz i roku 2+ : " +query.list().toString());
+	}
+	
+	//Zadaine4(5)
+	private void updateSchool() {
+	
+		Query query = session.createQuery("from School where id= :id");
+		query.setLong("id", 2);
+		School school = (School) query.uniqueResult();
+		System.out.println("\n---------\n" + school);
+	}
+	
+	
+	
+	//Zadanie 3
 	private void addNewData() {
 		
 		//Preaparing The DATA
@@ -80,7 +127,7 @@ public class Main {
 		
 		newSchool.setClasses(tempClasses);
 		newSchool.setAddress("Not to be disclosed");
-		newSchool.setName("Xaviers");
+		newSchool.setName("UE");
 		
 				
 		//Addidng DATA
