@@ -77,6 +77,15 @@ public class Main {
 		query.setLong("id", 2);
 		School school = (School) query.uniqueResult();
 		System.out.println("\n---------\n" + school);
+		Transaction transaction = session.beginTransaction();
+		school.setAddress("ul. Zmieniona 22");
+		transaction.commit();
+		query.setLong("id", 2);
+		School school2 = (School) query.uniqueResult();
+		System.out.println("\n---------\n Nowy Adress" + school2);
+		
+		
+		
 	}
 	
 	
