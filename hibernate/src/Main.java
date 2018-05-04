@@ -92,16 +92,16 @@ public class Main {
 	private void addNewTeacherData() {
 		//preparing Teachers
 		
-		Teacher teacher1 = new Teacher("Profesor", "Xavier","Pscyhic reading");
-		Teacher teacher2 = new Teacher("Logan", "WeponX","Regeneration");
-		Teacher teacher3 = new Teacher("Bruce", "Banner","Meditatiom");
-		Teacher teacher4 = new Teacher("Bucky", "Barnes","One-arm combat");
+		Teacher teacher1 = new Teacher("Morgan", "Freeman","Pscyhic reading");
+		Teacher teacher2 = new Teacher("Niko", "Belic","Regeneration");
+		Teacher teacher3 = new Teacher("Vlad", "Impailer","Meditatiom");
+		Teacher teacher4 = new Teacher("Conan", "Babarian","One-arm combat");
 		
 		//fetching classes
 	
-		Query query = session.createQuery("FROM SchoolClass WHERE id=1");
+		Query query = session.createQuery("FROM SchoolClass WHERE id=5");
 		SchoolClass sClass1 = (SchoolClass) query.uniqueResult();
-		query = session.createQuery("FROM SchoolClass WHERE id=2");
+		query = session.createQuery("FROM SchoolClass WHERE id=6");
 		SchoolClass sClass2 = (SchoolClass) query.uniqueResult();
 		System.out.println(sClass1);
 		System.out.println(sClass2);
